@@ -1,11 +1,22 @@
+from string import punctuation
+
+
 class Cpf_validation:
+    
+    def only_numbers(cpf):
+        numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+        only_cpf_numbers = ''
+        for number in cpf:
+            if number in numbers:
+                only_cpf_numbers += number
+        return only_cpf_numbers
     
     def validation(cpf):
         while True:
+            cpf = Cpf_validation.only_numbers(cpf)
             new_cpf = cpf[:-2]
             reverse = 10
             total = 0
-
             for index in range(19):
                 if index > 8:
                     index -= 9

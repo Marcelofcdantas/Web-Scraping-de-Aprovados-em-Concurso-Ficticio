@@ -20,7 +20,7 @@ class Scraping:
             print(cpf)
             print(name)
             print(score)
-            Controller(name, cpf, score)
+            Controller.controller(name, cpf, score)
             id += 1
         next_page = aproved_data.css('body > div > a::attr(href)').get()
         response = requests.get(url + next_page)
