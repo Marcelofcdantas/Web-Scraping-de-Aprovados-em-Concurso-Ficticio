@@ -10,7 +10,7 @@ class Controller:
         return name.lower()
 
 
-    def controller(name, cpf, score):
+    def controller(user_id, name, score, cpf):
         valid_cpf = Cpf_validation.validation(cpf)
         name = Controller.data_cleaning(name)
-        Model.model(name, score, cpf, valid_cpf)
+        Model.create(user_id, name, score, cpf, valid_cpf)

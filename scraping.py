@@ -2,11 +2,12 @@ import requests
 from time import sleep
 from parsel import Selector
 from controller.controller import Controller
+from model.model import Model
 
 
 class Scraping:
 
-    def getting_data(url, response):
+    def getting_data(url, response, user_id):
         aproved_data = Selector(text=response.text)
         cpfs_numbers = aproved_data.css("body > li > a ::text").getall()
         id = 0
@@ -18,16 +19,13 @@ class Scraping:
             name = result.css("body > div:nth-child(2)::text").get()
             score = result.css("body > div:nth-child(3)::text").get()
             score = score.strip()
-            print(cpf)
-            print(name)
-            print(score)
-            print(len(score))
-            Controller.controller(name, cpf, score)
+            Controller.controller(user_id, name, score, cpf)
             id += 1
+            user_id += 1
         next_page = aproved_data.css('body > div > a::attr(href)').get()
         response = requests.get(url + next_page)
         if response.status_code == 200:
-            Scraping.getting_data(url, response)
+            Scraping.getting_data(url, response, user_id)
 
 
     def fetch(delay = 1, timeout = 3):
@@ -39,7 +37,10 @@ class Scraping:
             return 'Erro na resposta ou no endereço'
         else:
             if response.status_code == 200:
-                Scraping.getting_data(url, response)
+                user_id = 1
+                user_id = Model.count_datas(user_id)
+                print(user_id)
+                Scraping.getting_data(url, response, user_id)
 
 
 print(Scraping.fetch())
