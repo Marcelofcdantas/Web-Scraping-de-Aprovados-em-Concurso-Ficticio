@@ -8,8 +8,8 @@ class Model:
     def connect():
         connection = pymysql.connect(
             host='localhost',
-            user='marcelofcd',
-            password='nany2302',
+            user='root',
+            password='root',
             charset='utf8mb4',
             cursorclass=pymysql.cursors.DictCursor
         )
