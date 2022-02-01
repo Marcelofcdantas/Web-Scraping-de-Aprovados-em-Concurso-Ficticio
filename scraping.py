@@ -17,9 +17,11 @@ class Scraping:
             cpf = cpfs_numbers[id]
             name = result.css("body > div:nth-child(2)::text").get()
             score = result.css("body > div:nth-child(3)::text").get()
+            score = score.strip()
             print(cpf)
             print(name)
             print(score)
+            print(len(score))
             Controller.controller(name, cpf, score)
             id += 1
         next_page = aproved_data.css('body > div > a::attr(href)').get()
