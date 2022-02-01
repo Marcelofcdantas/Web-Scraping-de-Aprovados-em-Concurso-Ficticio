@@ -30,7 +30,7 @@ class Model:
                     PRIMARY KEY (id)) """
 
         with Model.connect() as connect:
-            print(f'Cadastro realizado em nome de {name}')
+            print(f'Cadastro de {name} realizado com sucesso, cujo CPF {cpf} cadastrado é {valid_cpf}')
             with connect.cursor() as cursor:
                 cursor.execute(f'CREATE DATABASE IF NOT EXISTS `db_aprovados`')
                 cursor.execute(f'USE `db_aprovados`')

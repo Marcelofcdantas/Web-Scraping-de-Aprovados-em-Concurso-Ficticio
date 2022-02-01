@@ -39,7 +39,6 @@ class Scraping:
             if response.status_code == 200:
                 user_id = 1
                 user_id = Model.count_datas(user_id)
-                print(user_id)
                 Scraping.getting_data(url, response, user_id)
 
 
