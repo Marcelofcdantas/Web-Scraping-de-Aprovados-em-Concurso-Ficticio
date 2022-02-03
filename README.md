@@ -3,7 +3,7 @@
 Projeto desenvolvido no qual faz-se web scraping de dados que são tratados e validados para serem salvos em um banco de dados MySQL.
 
 
-# Clonagem do projeto
+## Clonagem do projeto
 
 - A clonagem é feita através do comando:
 
